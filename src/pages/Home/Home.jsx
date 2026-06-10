@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const FEATURES = [
   {
     title: "تمرکز بدون حواس‌پرتی",
@@ -199,7 +201,7 @@ function DashboardPreview() {
 
 function Hero() {
   return (
-    <section className="px-6 pb-24 pt-36 md:pb-32 md:pt-40">
+    <section className="px-6 pb-24 pt-10 md:pb-32 md:pt-20">
       <div className="mx-auto max-w-[1100px]">
         <div className="mb-8 flex justify-center">
           <div className="inline-flex items-center gap-1.5 rounded-full border border-[#8B5CF6]/25 bg-[#8B5CF6]/[0.06] px-4 py-[5px]">
@@ -209,9 +211,15 @@ function Hero() {
         </div>
 
         <h1 className="mx-auto mb-5 max-w-[780px] text-center text-5xl font-bold leading-[1.1] tracking-tighter text-[#FAFAFA] md:text-6xl lg:text-7xl">
-          کار تیمی،
+          از ایده تا اجرا
           <br />
-          <span className="text-[#A1A1AA]">بدون اغتشاش.</span>
+          <span className="mx-auto mb-5 max-w-[780px] text-center text-5xl font-bold leading-[1.1] tracking-tighter text-[#FAFAFA] md:text-6xl lg:text-7xl">
+            همگی در
+          </span>
+          <span> </span>
+          <span className="mx-auto mb-5 max-w-[780px] text-center text-5xl font-bold leading-[1.1] tracking-tighter text-fluxa-primary md:text-6xl lg:text-7xl">
+            Fluxa
+          </span>
         </h1>
 
         <p className="mx-auto mb-11 max-w-[460px] text-center text-base leading-[1.75] text-[#A1A1AA] md:text-lg">

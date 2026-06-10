@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const NAV_LINKS = ["ویژگی‌ها", "قیمت‌گذاری", "درباره ما"];
@@ -7,9 +7,12 @@ export default function Header() {
       <div className="mx-auto flex h-14 max-w-275 w-full items-center justify-between px-6">
         <div className="flex items-center gap-2">
           <div className="h-[22px] w-[22px] rounded-md bg-[#8B5CF6] opacity-90" />
-          <span className="font-inter text-[15px] font-medium tracking-tight text-[#FAFAFA]">
+          <Link
+            to="/"
+            className="font-inter text-[15px] font-medium tracking-tight text-[#FAFAFA]"
+          >
             Fluxa
-          </span>
+          </Link>
         </div>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -25,12 +28,12 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
-            href="#"
+          <Link
+            to="/login"
             className="hidden text-sm text-[#A1A1AA] transition-colors duration-200 hover:text-[#FAFAFA] sm:block"
           >
             ورود
-          </a>
+          </Link>
           <a
             href="#"
             className="rounded-lg bg-[#FAFAFA] px-4 py-1.75 text-[13px] font-medium text-[#09090B] transition-opacity duration-200 hover:opacity-85"
