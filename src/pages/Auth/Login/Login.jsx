@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Login() {
   const [focused, setFocused] = useState(null);
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -92,25 +92,25 @@ export default function Login() {
           }}
         >
           <div className="flex flex-col gap-5">
-            {/* Username */}
+            {/* email */}
             <div className="flex flex-col gap-2">
               <label className="text-[13px] font-medium text-[#A1A1AA]">
-                نام کاربری
+                ایمیل
               </label>
               <div
                 className={`flex flex-row items-center rounded-lg border px-4 py-3 transition-all duration-200
                   ${
-                    focused === "username"
+                    focused === "email"
                       ? "border-[#8B5CF6]/50 "
                       : "border-white/[0.06] hover:border-white/[0.10]"
                   }`}
                 style={{ background: "rgba(9,9,11,0.5)" }}
               >
                 <input
-                  type="username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  onFocus={() => setFocused("username")}
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  onFocus={() => setFocused("email")}
                   onBlur={() => setFocused(null)}
                   placeholder="fluxa_user"
                   className="w-full bg-transparent text-sm text-[#FAFAFA] outline-none placeholder:text-[#3F3F46]"
