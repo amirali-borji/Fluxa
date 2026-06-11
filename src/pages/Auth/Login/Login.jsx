@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [focused, setFocused] = useState(null);
@@ -210,12 +211,12 @@ export default function Login() {
         {/* Sign up */}
         <p className="mt-6 text-center text-[13px] text-[#52525B]">
           حساب ندارید؟{" "}
-          <a
-            href="#"
+          <Link
+            to="/register"
             className="text-[#A1A1AA] transition-colors duration-200 hover:text-[#FAFAFA]"
           >
             ثبت‌نام رایگان
-          </a>
+          </Link>
         </p>
       </div>
     </div>
