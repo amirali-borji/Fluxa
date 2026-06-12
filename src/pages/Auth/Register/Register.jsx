@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { supabase } from "../../../services/supabase-client";
+import toast from "react-hot-toast";
 
 export default function Login() {
   const [focused, setFocused] = useState(null);
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -13,6 +16,35 @@ export default function Login() {
     const t = setTimeout(() => setMounted(true), 50);
     return () => clearTimeout(t);
   }, []);
+
+  const signUpHandler = async () => {
+    if (loading) return;
+    setLoading(true);
+
+    const { error } = await supabase.auth.signUp({
+      displayName,
+      email,
+      password,
+    });
+
+    if (error) {
+      setLoading(false);
+      if (error.message === "Password should be at least 6 characters.") {
+        toast.error("رمز عبور باید حداقل 6 کاراکتر باشد");
+        return;
+      }
+      if (error.message === "email rate limit exceeded") {
+        toast.error(
+          "تعداد درخواست‌های ایمیل شما بیش از حد مجاز است. لطفاً بعداً دوباره تلاش کنید.",
+        );
+        return;
+      }
+
+      console.error("Error signing up: ", error);
+    } else {
+      toast.success("ایمیل خودتون رو چک کنید");
+    }
+  };
 
   return (
     <div className="relative flex min-h-[calc(100vh-56px)] w-full items-center justify-center overflow-hidden bg-[#09090B] px-4">
@@ -56,7 +88,7 @@ export default function Login() {
         }}
       >
         {/* Logo */}
-        <div className="mb-5 flex flex-col items-center gap-3">
+        <div className="mb-2 flex flex-col items-center gap-3">
           <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#8B5CF6]/10 ring-1 ring-[#8B5CF6]/25">
             <div className="h-5 w-5 rounded-md bg-[#8B5CF6]" />
           </div>
@@ -225,11 +257,56 @@ export default function Login() {
             </div>
 
             {/* Submit */}
+            {/* Submit */}
             <button
-              type="button"
-              className="mt-1 w-full rounded-lg bg-[#8B5CF6] py-3 text-sm font-semibold text-white transition-all duration-200 hover:opacity-85 active:scale-[0.99]"
+              onClick={signUpHandler}
+              disabled={loading}
+              className="relative mt-1 w-full overflow-hidden rounded-lg bg-[#8B5CF6] py-3 text-sm font-semibold text-white transition-all duration-200 hover:opacity-85 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-70"
             >
-              ورود به حساب
+              {/* shimmer sweep هنگام لودینگ */}
+              {loading && (
+                <span
+                  className="pointer-events-none absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.08) 50%, transparent 60%)",
+                    animation: "shimmer 1.6s ease infinite",
+                  }}
+                />
+              )}
+
+              <span className="relative flex items-center justify-center gap-2">
+                {loading ? (
+                  <>
+                    {/* دو حلقه که در جهت مخالف می‌چرخند */}
+                    <span className="relative h-[18px] w-[18px] shrink-0">
+                      <span
+                        className="absolute inset-0 rounded-full"
+                        style={{
+                          border: "1.5px solid transparent",
+                          borderTopColor: "rgba(255,255,255,0.9)",
+                          borderRightColor: "rgba(255,255,255,0.3)",
+                          animation: "spin 0.9s linear infinite",
+                        }}
+                      />
+                      <span
+                        className="absolute rounded-full"
+                        style={{
+                          inset: "4px",
+                          border: "1.5px solid transparent",
+                          borderBottomColor: "rgba(255,255,255,0.7)",
+                          animation: "spin 0.6s linear infinite reverse",
+                        }}
+                      />
+                    </span>
+                    <span style={{ transition: "opacity 0.2s" }}>
+                      در حال ثبت نام...
+                    </span>
+                  </>
+                ) : (
+                  "ثبت نام"
+                )}
+              </span>
             </button>
           </div>
         </div>

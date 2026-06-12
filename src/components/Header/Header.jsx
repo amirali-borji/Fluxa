@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-export default function Header() {
+export default function Header({ session }) {
   const NAV_LINKS = ["ویژگی‌ها", "قیمت‌گذاری", "درباره ما"];
   return (
-    <header className="flex justify-center fixed top-0 right-0 left-0 z-50 border-b border-[#27272A] bg-[#09090B]/85 backdrop-blur-xl">
-      <div className="mx-auto flex h-14 max-w-275 w-full items-center justify-between px-6">
+    <header className="flex justify-center fixed top-0 right-0 left-0 z-50 border-b border-[#27272A] bg-[#09090B]/20 backdrop-blur-xl">
+      <div className="mx-auto my-1 flex h-14 max-w-275 w-full items-center justify-between px-6">
         <div className="flex items-center gap-2">
           <div className="h-[22px] w-[22px] rounded-md bg-[#8B5CF6] opacity-90" />
           <Link
@@ -28,18 +28,21 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link
-            to="/login"
-            className="hidden text-sm text-[#A1A1AA] transition-colors duration-200 hover:text-[#FAFAFA] sm:block"
-          >
-            ورود
-          </Link>
-          <a
-            href="#"
-            className="rounded-lg bg-[#FAFAFA] px-4 py-1.75 text-[13px] font-medium text-[#09090B] transition-opacity duration-200 hover:opacity-85"
-          >
-            شروع رایگان
-          </a>
+          {session ? (
+            <Link
+              to="/dashboard"
+              className="rounded-lg bg-[#FAFAFA] px-4 py-1.75 text-[13px] font-medium text-[#09090B] transition-opacity duration-200 hover:opacity-85"
+            >
+              داشبورد
+            </Link>
+          ) : (
+            <Link
+              to="/login"
+              className="rounded-lg bg-[#FAFAFA] px-4 py-1.75 text-[13px] font-medium text-[#09090B] transition-opacity duration-200 hover:opacity-85"
+            >
+              ورود
+            </Link>
+          )}
         </div>
       </div>
     </header>
