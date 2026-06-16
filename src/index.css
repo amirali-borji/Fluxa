@@ -158,6 +158,10 @@ body {
   border-radius: 999px;
 }
 
+button{
+  cursor: pointer;
+}
+
 /* =========================
    Selection
 ========================= */
