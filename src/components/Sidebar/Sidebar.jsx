@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ChevronRightIcon } from "../../services/icons";
+import { ArrowLeftStartOnRectangleIcon } from "../../services/icons";
 import SidebarItem from "../SidebarItem/SidebarItem";
 import { BriefcaseIcon } from "../../services/icons";
 import { useModal } from "../../context/ModalContext";
@@ -7,6 +8,13 @@ import { useModal } from "../../context/ModalContext";
 const Sidebar = ({ activeTab, setActiveTab, logoutHandler }) => {
   const [isExpandded, setIsExpanded] = useState(false);
   const { setModalOpen, setModalText, setYesHandler } = useModal();
+  const openLogoutModal = () => {
+    setModalText("آیا مطمئنی میخوای خارج بشی؟");
+
+    setYesHandler(() => logoutHandler);
+
+    setModalOpen(true);
+  };
 
   return (
     <div
@@ -17,9 +25,10 @@ const Sidebar = ({ activeTab, setActiveTab, logoutHandler }) => {
     flex flex-col py-4
     transition-all duration-300
 
-    bg-white/10
-    backdrop-blur-md
-    border-r border-white/10
+    bg-fluxa-bg
+    border-l
+    border-fluxa-border-light
+    
 
     ${isExpandded ? "w-64" : "w-16"}
   `}
@@ -60,20 +69,24 @@ const Sidebar = ({ activeTab, setActiveTab, logoutHandler }) => {
       </div>
 
       {/* Logout */}
-      <button
-        onClick={() => {
-          setModalText("آیا مطمئنی میخوای خارج بشی؟");
+      <div className="p-2 py-3 pr-2.5">
+        <button
+          onClick={openLogoutModal}
+          className="flex items-center w-full p-2 rounded-lg bg-red-500 hover:bg-red-600 transition"
+        >
+          <ArrowLeftStartOnRectangleIcon className="w-full h-5 flex-shrink-0" />
 
-          setYesHandler(() => () => {
-            logoutHandler();
-          });
-
-          setModalOpen(true);
-        }}
-        className="w-full mt-4 p-2 rounded-lg bg-red-500 hover:bg-red-600 transition"
-      >
-        Log out
-      </button>
+          <span
+            className={`
+            overflow-hidden whitespace-nowrap
+            transition-all duration-300 ease-in-out
+            ${isExpandded ? "max-w-40 opacity-100 mr-2" : "max-w-0 opacity-0 mr-0"}
+            `}
+          >
+            خروج
+          </span>
+        </button>
+      </div>
     </div>
   );
 };
