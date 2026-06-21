@@ -83,6 +83,11 @@ function Tasks() {
             گروه‌بندی
           </button>
           <button
+          
+          className="rounded-md bg-[#8B5CF6] px-2.5 py-1 text-[11.5px] text-white transition-opacity hover:opacity-85">
+            ذخیره
+          </button>
+          <button
             onClick={() => setIsModalOpen(true)}
             className="rounded-md bg-[#8B5CF6] px-2.5 py-1 text-[11.5px] text-white transition-opacity hover:opacity-85"
           >
@@ -149,8 +154,8 @@ function Tasks() {
               </span>
             </div>
 
-            <span className="hidden rounded border border-[#27272A] px-1.5 py-0.5 text-[10.5px] text-[#52525B] md:inline-block">
-              {task.tag}
+            <span className="hidden rounded border truncate  border-[#27272A] px-1.5 py-0.5 text-[10.5px] text-[#52525B] md:inline-block">
+              {task.tag ? task.tag : "خالی"}
             </span>
           </div>
         );
