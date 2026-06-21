@@ -19,3 +19,18 @@ export async function createTask(taskData) {
     },
   ]);
 }
+
+export async function updateTask(id, updates) {
+  const { data, error } = await supabase
+    .from("tasks")
+    .update(updates)
+    .eq("id", id)
+    .select()
+    .single();
+  return { data, error };
+}
+
+export async function deleteTask(id) {
+  const { data, error } = await supabase.from("tasks").delete().eq("id", id);
+  return { data, error };
+}
