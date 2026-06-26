@@ -9,21 +9,6 @@ import {
 } from "../../services/tasks";
 import TaskModal from "../../components/AddTaskModal/AddTaskModal";
 
-// ⚠️ این تابع باید در services/tasks.js باشه — اگه نداری اضافه کن:
-//
-// export async function updateTask(id, updates) {
-//   const { data, error } = await supabase
-//     .from("tasks")
-//     .update(updates)
-//     .eq("id", id)
-//     .select()
-//     .single();
-//   return { data, error };
-// }
-
-// ⚠️ جدول tasks باید این دو ستون رو هم داشته باشه (نوع date):
-//   start_date, end_date
-
 // 🎨 تنظیمات نمایش وضعیت
 const STATUS_CONFIG = {
   todo: {

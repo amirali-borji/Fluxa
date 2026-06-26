@@ -13,13 +13,13 @@ function Modal() {
   if (!modalOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/10 backdrop-blur-[5px] transition-all ease-in-out flex items-center justify-center font-dana-medium">
+    <div className="fixed inset-0 bg-black/10 backdrop-blur-[5px] transition-all ease-in-out flex items-center justify-center font-dana-medium p-4">
       <div
         onClick={(e) => e.stopPropagation()}
-        className="bg-fluxa-surface-2 w-80 rounded-2xl shadow-xl overflow-hidden"
+        className="bg-fluxa-surface-2 w-full max-w-xs sm:max-w-sm rounded-2xl shadow-xl overflow-hidden"
       >
-        <div className="p-5 text-center">
-          <p>{modalText}</p>
+        <div className="p-4 sm:p-5 text-center">
+          <p className="break-words text-sm sm:text-base">{modalText}</p>
         </div>
 
         <div className="flex border-t border-fluxa-border-strong">
@@ -29,7 +29,7 @@ function Modal() {
               setModalOpen(false);
               setYesHandler(null);
             }}
-            className="w-1/2 py-3 text-fluxa-text-secondary font-dana-medium transition border-l border-fluxa-border-strong hover:bg-fluxa-surface-hover"
+            className="w-1/2 py-2.5 sm:py-3 text-sm sm:text-base text-fluxa-text-secondary font-dana-medium transition border-l border-fluxa-border-strong hover:bg-fluxa-surface-hover"
           >
             بله
           </button>
@@ -39,7 +39,7 @@ function Modal() {
               setModalOpen(false);
               noHandler?.();
             }}
-            className="w-1/2 py-3 text-fluxa-text-secondary font-dana-medium transition hover:bg-fluxa-surface-hover"
+            className="w-1/2 py-2.5 sm:py-3 text-sm sm:text-base text-fluxa-text-secondary font-dana-medium transition hover:bg-fluxa-surface-hover"
           >
             خیر
           </button>
@@ -50,37 +50,3 @@ function Modal() {
 }
 
 export default Modal;
-
-// function Modal({ isOpen, title, onYes, onNo }) {
-//   if (!isOpen) return null;
-
-//   return (
-//     <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
-//       <div className="bg-fluxa-surface-2 w-80 rounded-2xl shadow-xl overflow-hidden">
-//         {/* متن */}
-//         <div className="p-5 text-center">
-//           <p className="text-gray-800 text-base font-medium">{title}</p>
-//         </div>
-
-//         {/* دکمه‌ها */}
-//         <div className="flex border-t border-fluxa-border-strong">
-//           <button
-//             onClick={onYes}
-//             className="w-1/2 py-3 text-fluxa-text-secondary font-dana-medium transition border-l border-fluxa-border-strong hover:bg-fluxa-surface-hover"
-//           >
-//             بله
-//           </button>
-
-//           <button
-//             onClick={onNo}
-//             className="w-1/2 py-3 transition text-fluxa-text-secondary  font-dana-medium hover:bg-fluxa-surface-hover"
-//           >
-//             خیر
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Modal;

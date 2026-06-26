@@ -57,15 +57,6 @@ const Sidebar = ({ activeTab, setActiveTab, logoutHandler }) => {
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
-
-        <SidebarItem
-          label="تسک ها"
-          tabKey="tasسks"
-          icon={<BriefcaseIcon className="w-5 h-5" />}
-          isExpandded={isExpandded}
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-        />
       </div>
 
       {/* Logout */}

@@ -1,27 +1,5 @@
 import { useState, useEffect } from "react";
 
-/**
- * TaskModal
- * مودال اضافه کردن تسک جدید
- *
- * Props:
- * - isOpen     : boolean         -> کنترل باز/بسته بودن مودال
- * - onClose    : function        -> هر وقت مودال باید بسته شود صدا زده می‌شود
- * - onSubmit   : function(data)  -> هنگام ثبت فرم صدا زده می‌شود، data شامل
- *                                   { title, description, status, priority, tag }
- *                                   👈 اینجا خودتون باید فانکشن واقعی (مثلا Supabase insert) رو وصل کنید
- *
- * مثال استفاده:
- * <TaskModal
- *   isOpen={isModalOpen}
- *   onClose={() => setIsModalOpen(false)}
- *   onSubmit={async (data) => {
- *     await supabase.from('tasks').insert({ ...data, user_id: user.id });
- *     refetchTasks();
- *   }}
- * />
- */
-
 const STATUS_OPTIONS = [
   { value: "todo", label: "در صف" },
   { value: "in_progress", label: "در حال انجام" },
