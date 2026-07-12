@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronRightIcon } from "../../services/icons";
+import { ChevronRightIcon, Waves } from "../../services/icons";
 import { ArrowLeftStartOnRectangleIcon } from "../../services/icons";
 import SidebarItem from "../SidebarItem/SidebarItem";
 import { BriefcaseIcon } from "../../services/icons";
@@ -48,11 +48,21 @@ const Sidebar = ({ activeTab, setActiveTab, logoutHandler }) => {
       </div>
 
       {/* Navigation */}
-      <div className="flex flex-col flex-1 mt-5 ">
+      <div className="flex flex-col  mt-5 ">
         <SidebarItem
           label="تسک ها"
           tabKey="tasks"
           icon={<BriefcaseIcon className="w-5 h-5" />}
+          isExpandded={isExpandded}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
+      </div>
+      <div className="flex flex-col flex-1  mt-2 ">
+        <SidebarItem
+          label="فلو"
+          tabKey="flow"
+          icon={<Waves className="w-5 h-5" />}
           isExpandded={isExpandded}
           activeTab={activeTab}
           setActiveTab={setActiveTab}

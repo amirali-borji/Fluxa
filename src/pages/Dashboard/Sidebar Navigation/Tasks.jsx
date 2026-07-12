@@ -6,8 +6,8 @@ import {
   createTask,
   updateTask,
   deleteTask,
-} from "../../services/tasks";
-import TaskModal from "../../components/AddTaskModal/AddTaskModal";
+} from "../../../services/tasks";
+import TaskModal from "../../../components/AddTaskModal/AddTaskModal";
 
 // 🎨 تنظیمات نمایش وضعیت
 const STATUS_CONFIG = {
