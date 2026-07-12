@@ -13,7 +13,7 @@ function Modal() {
   if (!modalOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/10 backdrop-blur-[5px] transition-all ease-in-out flex items-center justify-center font-dana-medium p-4">
+    <div className="fixed inset-0 z-50 bg-black/10 backdrop-blur-[5px] transition-all ease-in-out flex items-center justify-center font-dana-medium p-4">
       <div
         onClick={(e) => e.stopPropagation()}
         className="bg-fluxa-surface-2 w-full max-w-xs sm:max-w-sm rounded-2xl shadow-xl overflow-hidden"

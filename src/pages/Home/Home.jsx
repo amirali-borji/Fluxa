@@ -228,12 +228,12 @@ function Hero() {
         </p>
 
         <div className="mb-20 flex flex-wrap justify-center gap-3">
-          <a
-            href="#"
+          <Link
+            to="/login"
             className="rounded-lg bg-[#FAFAFA] px-6 py-[11px] text-sm font-medium text-[#09090B] transition-opacity duration-200 hover:opacity-85"
           >
             شروع رایگان
-          </a>
+          </Link>
           <a
             href="#"
             className="rounded-lg border border-[#27272A] px-6 py-[11px] text-sm text-[#A1A1AA] transition-colors duration-200 hover:border-[#52525B] hover:text-[#FAFAFA]"

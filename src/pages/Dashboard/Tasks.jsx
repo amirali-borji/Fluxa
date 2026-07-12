@@ -154,9 +154,6 @@ function CalendarIcon({ className = "" }) {
   );
 }
 
-// ──────────────────────────────
-// 🔹 سلول وضعیت (قابل تغییر) — دراپ‌داون به‌صورت Portal روی body
-// ──────────────────────────────
 function StatusCell({ task, isOpen, onToggle, onSelect, dropdownRef }) {
   const info = STATUS_CONFIG[task.status] ?? STATUS_CONFIG.todo;
   const anchorRef = useRef(null);
@@ -602,9 +599,10 @@ function Tasks() {
               className="flex min-w-0 items-center gap-2 text-right"
             >
               <ChevronIcon
-                className={`h-3 w-3 shrink-0 text-[#52525B] opacity-0 transition-all duration-150 group-hover:opacity-70 ${
+                className={`h-3 w-3 shrink-0 text-[#52525B] opacity-0 transition-all duration-150 opacity-70 md:opacity-0 md:group-hover:opacity-70 transition-all ${
                   isExpanded ? "opacity-70" : "rotate-90"
-                }`}
+                }
+                `}
               />
               <span
                 className={`min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-[12.5px] ${
