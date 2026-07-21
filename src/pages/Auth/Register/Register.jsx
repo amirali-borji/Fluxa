@@ -25,6 +25,12 @@ export default function Login() {
       displayName,
       email,
       password,
+      options: {
+        data: {
+          displayName,
+        },
+        emailRedirectTo: "https://amirali-borji.github.io/Fluxa/#/",
+      },
     });
 
     if (error) {
